@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.searchbox {
+  position: relative;
+  min-width: 40px;
+  width: 0%;
+  overflow: hidden;
+  border-radius: 50%;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.searchbox-input {
+  outline: 0;
+  background: #fff;
+  overflow: hidden;
+  width: 200px;
+  height: 40px;
+  margin: 0;
+  padding: 0px 55px 0px 20px;
+  font-size: 20px;
+  color: #293033a6;
+}
+.searchbox-input::-webkit-input-placeholder {
+  color: #293033a6;
+}
+.searchbox-input:-moz-placeholder {
+  color: #293033a6;
+}
+.searchbox-input::-moz-placeholder {
+  color: #293033a6;
+}
+.searchbox-input:-ms-input-placeholder {
+  color: #293033a6;
+}
+.searchbox-icon {
+  width: 40px;
+  height: 26px;
+  display: block;
+  position: absolute;
+  top: 0;
+  font-size: 13px;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  line-height: 50px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.searchbox-open {
+  width: 200px;
+  height: 40px;
+  border-radius: 40px;
+}
+.product {
+  width: 98%;
+}
+.sale {
+  box-shadow: 2px 2px 2px 2px red;
+}
