@@ -63,7 +63,7 @@
             </script>
             <div>
                 <a href="">
-                    <img src="../img/logo.svg" alt="">
+                    <img src="./img/logo.png" alt="">
                 </a>
 
             </div>

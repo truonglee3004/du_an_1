@@ -832,6 +832,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
   border-radius: 50%;
 }
+.danhmuc {
+  width: 406px;
+  height: 236.23px;
+}
 
 .searchbox-open {
   width: 200px;

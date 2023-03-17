@@ -22,7 +22,7 @@
                 </div>
                 <!-- Logo -->
                 <div>
-                    <img src="../img/logo.png" class="h-8" alt="">
+                    <img src="./img/logo.png" class="h-8" alt="">
                 </div>
             </div>
             <!-- List Container -->
