@@ -65,11 +65,22 @@
                 <a href="">
                     <img src="./img/logo.png" alt="">
                 </a>
-
+                <?php
+                    if(isset($_SESSION['user'])){
+                    $list_cart = queryAllCart($_SESSION['user']['id']);
+                    }
+                ?>
             </div>
-            <div>
-                <a href=""><iconify-icon icon="material-symbols:person" width="26"></iconify-icon></a>
-                <a href=""><iconify-icon icon="material-symbols:shopping-cart" width="26"></iconify-icon></a>
+            <div class="flex">
+                <div class="group">
+                    <a  href="<?php if(!isset($_SESSION['user'])) echo "index.php?act=signin"; else echo "#";?>"><iconify-icon icon="material-symbols:person" width="26"></iconify-icon><?php if(isset($_SESSION['user'])) echo $_SESSION['user']['user_name'];?></a>
+                    <ul class="hidden bg-white absolute z-10 group-hover:block">
+                        <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="#">Submenu item</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="#">Submenu item</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="index.php?act=logout">Đăng xuất</a></li>
+                    </ul>
+                </div>
+                <div class=""><a href="index.php?act=viewcard"><iconify-icon icon="material-symbols:shopping-cart" width="26"></iconify-icon><?php if(isset($list_cart)) echo count($list_cart);?></a></div>
             </div>
         </div>
         <nav class="flex items-center justify-center gap-x-7 mt-2">
@@ -80,6 +91,7 @@
             <a href="index.php?target=contact" class="hover:text-orange-500 hover:no-underline uppercase">Contact</a>
         </nav>
     </header>
+
 </body>
 
 </html>

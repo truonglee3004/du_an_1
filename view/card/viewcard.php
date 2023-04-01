@@ -2,60 +2,70 @@
     // show_array($list_cate);
 ?>
 
-<p class="p-3 text-[28px] border bg-[#EEE] rounded-md">
-    Giỏ Hàng
-</p>
+<div class="bg-[#DBDBDB] w-full px-[74px]">
+
 <?php if(isset($thong_bao)) echo "<p class='text-red-500'>".$thong_bao."</p>"?>
 <div class="list_cate mt-6 w-full">
-    <table class="border w-full mx-auto ">
-        <tr class="bg-[#FFC0CB] py-2 border text-center text-red-600" >
-            <td class="w-[55px] "></td>
-            <td title="Mã loại hàng" class="w-[140px]">ID Sản Phẩm</td>
-            <td title="Mã loại hàng" class="w-[140px]">Ảnh</td>
-            <td title="Mã loại hàng" class="w-[140px]">Đơn Giá</td>
-            <td title="Tên loại hàng" class="">Số Lượng</td>
-            <td title="Tên loại hàng" class="">Thành Tiền</td>
-            <td title="Hành động" class="w-[120px]">Thao Tác</td>
+    <table class="w-full mx-auto ">
+        <tr>
+            <p class="p-3 text-[40px] border rounded-md pt-[58px]">
+                SHOPPING CART
+            </p>
+        </tr>
+        <tr class="py-2 text-center text-black text-[28px]" >
+            <td title="Mã loại hàng" class="w-[15%]"></td>
+            <td title="Mã loại hàng" class="w-[20%]">PRODUCTS</td>
+            <td title="Mã loại hàng" class="w-[20%]">PRICE</td>
+            <td title="Tên loại hàng" class="w-[15%]">QUANTITY</td>
+            <td title="Tên loại hàng" class="w-[15%]">TOTAL CASH</td>
+            <td title="Hành động" class="w-[15%]">Thao Tác</td>
         </tr>
         <?php
             $tong = 0;
             foreach ($list_cart as $card){
                 extract($card);
-            $pro_image = substr($pro_image, 3);
             $tong += $payment;
             
         ?>
             <tr class="show ">
-                <td class="text-center"><input type="checkbox"></td>
-                <td class="text-center"><?php echo $pro_id?></td>
-                <td class="text-center"><img src="<?=$pro_image?>" alt=""></td>  
+                <td class="text-center"><img class="w-[200px] h-[250px]" src="img/<?=$pro_image?>" alt=""></td>  
+                <td class="text-center"><?=$pro_name ?></td>
                 <td class="text-center"><?=$pro_price ?></td>
-              
-                <td class="text-center"><a href="index.php?act=change_amount&card_id=<?=$id?>&change=minus"><i class="fa-solid fa-chevron-left"></i></a><?=$amount?><a href="index.php?act=change_amount&card_id=<?=$id?>&change=add"><i class="fa-solid fa-chevron-right"></i></a></td>  
+                <td class="text-center"><div class="w-[192px] h-[51px] py-[5px] mx-auto bg-[#FDF6F6] text-[24px]"><a class="mr-[60px]" href="index.php?act=change_amount&card_id=<?=$id?>&change=minus"><i class="fa-solid fa-chevron-left"></i></a><?=$amount?><a class="ml-[60px]" href="index.php?act=change_amount&card_id=<?=$id?>&change=add"><i class="fa-solid fa-chevron-right"></i></a></div></td>  
                 <td class="text-center"><?php echo $payment?></td> 
                 <td class="text-center">
                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                         href="index.php?act=delete_card&card_id=<?=$id?>">Xóa</a>
                 </td>
             </tr>
-           
         <?php
            }
         ?>
-             <tr>
+             <!-- <tr>
                 <td class="text-center" colspan="5">Tổng số tiền</td>
                 <td class="text-center"><?=$tong?></td>
-            </tr>
+            </tr> -->
+           
     </table>
-    <div class="action w-full mx-auto mt-4 space-x-1">
-        <input type="button" value="Chọn tất cả">
-        <input type="button" value="Bỏ chọn tất cả">
-        <input type="button" value="Xóa các mục đã chọn">
+    <div class="mt-[35px] flex justify-between">
+        <div>
+            <p class="text-[24px]">CHÚ THÍCH</p>
+        </div>
+        <div class="text-[black] font-[600] texx-[24px] flex">
+            <p>Tổng Tiền:</p>
+            <p class="ml-[5px]"><?=$tong?></p>
+        </div>
+    </div>
+    <div class="action w-full mx-auto mt-4 space-x-1 flex">
+        <form action="">
+            <input type="submit" value="Thanh Toán">
+        </form>
                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                         href="index.php?act=delete_card">Xóa Giỏ Hàng</a>
-                </td>
+
     </div> <!-- End .action -->
 </div> <!-- End .list_cate-->
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,9 +89,11 @@
             border-collapse: collapse;
         }
         tr>td{
-            padding: 7px 0;
-            border: 1px solid gray;
+            padding: 42px 0;
+            border-bottom: 1px solid gray;
+            border-top: 1px solid gray;
         }
+
      
     </style>
 </script>
