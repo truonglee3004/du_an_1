@@ -27,7 +27,14 @@
                 <p class="font-[500] text-[20px] ml-[26px]">THỜI GIAN DỰ KIẾN QUÝ KHÁCH SẼ NHẬN ĐƯỢC HÀNG VÀO NGÀY 12-04-2023 ĐẾN 17-04-2023. NẾU QUÝ KHÁCH THANH TOÁN TRONG HÔM NAY</p>
             </div>
             <div class="bg-[white] w-[320px] font-[500] text-[24px] text-[#FF0000] h-[64px] px-[26px] py-[14px] rounded-[20px] mt-[48px]">
-                <input  type="submit" value="THÊM VÀO GIỎ HÀNG">
+                <form class="" action="<?php if(isset($_SESSION['user'])) echo "index.php?act=addtocard"; else echo "index.php?act=signin"?>" method="post">
+                    <input type="hidden" name="image" value="<?=$detail_pro['image_link']?>">
+                    <input type="hidden" name="id" value="<?=$detail_pro['id']?>">
+                    <input type="hidden" name="price" value="<?=$detail_pro['price']?>">
+                    <input type="hidden" name="pro_name" value="<?=$detail_pro['pro_name']?>">
+                    <input type="hidden" name="user" value="<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['id'] ?>">
+                    <input type="submit" name="addtocard" value="THÊM VÀO GIỎ HÀNG">
+                </form>
             </div>
             <div class="bg-[#8E1111] w-[670px] font-[500] text-[40px] text-[white] h-[98px] px-[200px] py-[24px] rounded-[20px] mt-[28px]">
                 <input  type="submit" value="MUA NGAY">

@@ -6,6 +6,12 @@
         $stmt -> execute();
         return $stmt;
     }
+    function connect2($query){
+        $connnect = new PDO("mysql:host=localhost;dbname=du_an_1;charset=utf8","root","");
+        $stmt = $connnect ->prepare($query);
+        $stmt -> execute();
+        return $stmt;
+    }
     // Hàm lấy tất cả dữ liệu
     function getAll($query){
         $result = connect($query)->fetchAll();
@@ -25,6 +31,21 @@
     
 ?>
 <?php
+function pdo_execute_return_lastID($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $conn-> lastInsertId();
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
 function pdo_get_connection(){
     $dburl = "mysql:host=localhost;dbname=du_an_1;charset=utf8";
     $username = 'root';

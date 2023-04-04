@@ -59,7 +59,22 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                 
             }
             include "view/account/signin.php";
-            break;   
+            break;
+        case 'edit_acc':
+            if(isset($_POST['update_acc'])){
+                $email = $_POST['hello'];
+                $userName = $_POST['userName'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                $user_id = $_POST['user_id'];
+                $password = $_POST['password'];
+                edit_user($user_id, $email, $userName, $phone, $address);
+                $_SESSION['user'] = queryOneUser($email, $password);
+                header("Location:index.php?act=edit_acc");
+            }
+            
+                include "view/account/edit_acc.php";
+                break;   
         case 'logout':
             session_unset();
             header("Location:index.php");
@@ -105,11 +120,63 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     }
                 }
                 $list_cart = queryAllCart($_SESSION['user']['id']);
-                include "view/card/viewcard.php";
+                case 'billconfirm':
+                    if(isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])){
+                        $user_id = $_POST['user_id'];
+                        $email = $_POST['email'];
+                        $user_name = $_POST['userName'];
+                        $phone = $_POST['phone'];
+                        $address = $_POST['address'];
+                        $tong = $_POST['tong'];
+                        $pttt = $_POST['pttt'];
+                        $date = date('h:i:sa d/m/Y');
+                        $list_cart = queryAllCart($_SESSION['user']['id']);
+                        $id_order = add_bill($user_id,$email,$user_name,$phone,$address,$tong,$date,$pttt);
+                        foreach($list_cart as $cart){
+                            extract($cart);
+                            add_ctbil($user_id, $pro_id, $pro_name, $pro_price, $pro_image, $amount, $payment, $id_order);
+                        }
+                    }
+                break;
                 break;
                 
             case 'viewcard':
                 include "view/card/viewcard.php";
+                break;
+            case 'bill':
+                include "view/card/bill.php";
+                break;
+            case 'billconfirm':
+                if(isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])){
+                    $user_id = $_POST['user_id'];
+                    $email = $_POST['email'];
+                    $user_name = $_POST['userName'];
+                    $phone = $_POST['phone'];
+                    $address = $_POST['address'];
+                    $tong = $_POST['tong'];
+                    $pttt = $_POST['pttt'];
+                    $date = date('h:i:sa d/m/Y');
+                    $list_cart = queryAllCart($_SESSION['user']['id']);
+                    $id_order = add_bill($user_id,$email,$user_name,$phone,$address,$tong,$date,$pttt);
+                    foreach($list_cart as $cart){
+                        extract($cart);
+                        add_ctbil($user_id, $pro_id, $pro_name, $pro_price, $pro_image, $amount, $payment, $id_order);
+                    }
+                    header("Location:index.php?act=mybill");
+                }
+            break;
+            case 'mybill':
+                $list_bill = query_bill_userid($_SESSION['user']['id']);
+                include "view/card/mybill.php";
+                break;
+            case 'detail_bill':
+                if(isset($_GET['bill_id']) && ($_GET['bill_id'] > 0)){
+                    $bill_id = $_GET['bill_id'];
+                    $detail_bill = queryOneBill($bill_id);    
+                    include "view/card/detail_bill.php";
+                } else{
+                    include "view/body.php";
+                }
                 break;
         } 
 

@@ -9,51 +9,48 @@
     <table class="w-full mx-auto ">
         <tr>
             <p class="p-3 text-[40px] border rounded-md pt-[58px]">
-                SHOPPING CART
+                MY ORDER
             </p>
         </tr>
         <tr class="py-2 text-center text-black text-[28px]" >
-            <td title="Mã loại hàng" class="w-[15%]"></td>
-            <td title="Mã loại hàng" class="w-[20%]">PRODUCTS</td>
-            <td title="Mã loại hàng" class="w-[20%]">PRICE</td>
-            <td title="Tên loại hàng" class="w-[15%]">QUANTITY</td>
-            <td title="Tên loại hàng" class="w-[15%]">TOTAL CASH</td>
-            <td title="Hành động" class="w-[15%]">Thao Tác</td>
+            <td title="Mã loại hàng" class="w-[10%]">Mã Đơn Hàng</td>
+            <td title="Tên loại hàng" class="w-[10%]">Ngày Đặt</td>
+            <td title="Mã loại hàng" class="w-[10%]">Người Đặt</td>
+            <td title="Mã loại hàng" class="w-[10%]">Địa chỉ</td>
+            <td title="Tên loại hàng" class="w-[10%]">Số Điện Thoại</td>
+            <td title="Tên loại hàng" class="w-[15%]">Hình Thức Thanh Toán</td>
+            <td title="Tên loại hàng" class="w-[15%]">Trạng Thái Đơn Hàng </td>
+            <td title="Tên loại hàng" class="w-[10%]">Thành Tiền</td>
+            <td title="Tên loại hàng" class="w-[10%]">Thao Tác</td>
         </tr>
         <?php
             $tong = 0;
-            foreach ($list_cart as $card){
-                extract($card);
-            $tong += $payment;
-            
+            foreach ($list_bill as $bill){
+                extract($bill);
+                $pttt =set_pttt($pttt);
+                $status =set_stt($status);
         ?>
             <tr class="show ">
-                <td class="text-center"><img class="w-[200px] h-[250px]" src="img/<?=$pro_image?>" alt=""></td>  
-                <td class="text-center"><?=$pro_name ?></td>
-                <td class="text-center"><?=$pro_price ?></td>
-                <td class="text-center"><div class="w-[192px] h-[51px] py-[5px] mx-auto bg-[#FDF6F6] text-[24px]"><a class="mr-[60px]" href="index.php?act=change_amount&card_id=<?=$id?>&change=minus"><i class="fa-solid fa-chevron-left"></i></a><?=$amount?><a class="ml-[60px]" href="index.php?act=change_amount&card_id=<?=$id?>&change=add"><i class="fa-solid fa-chevron-right"></i></a></div></td>  
-                <td class="text-center"><?php echo $payment?></td> 
+                <td class="text-center">SP-00<?=$order_id?></td>  
+                <td class="text-center"><?=$date ?></td>
+                <td class="text-center"><?=$user_name ?></td>
+                <td class="text-center"><?=$address ?></td>
+                <td class="text-center"><?=$phone?></td> 
+                <td class="text-center"><?=$pttt?></td> 
+                <td class="text-center"><?=$status?></td>  
+                <td class="text-center"><?=$tong?>đ</td> 
                 <td class="text-center">
-                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        href="index.php?act=delete_card&card_id=<?=$id?>">Xóa</a>
-                </td>
+                    <a href="index.php?act=detail_bill&bill_id=<?=$order_id?>">Chi tiết Đơn Hàng</a>
+                </td> 
             </tr>
         <?php
            }
         ?>
-             <!-- <tr>
-                <td class="text-center" colspan="5">Tổng số tiền</td>
-                <td class="text-center"><?=$tong?></td>
-            </tr> -->
            
     </table>
     <div class="mt-[35px] flex justify-between">
         <div>
             <p class="text-[24px]">CHÚ THÍCH</p>
-        </div>
-        <div class="text-[black] font-[600] texx-[24px] flex">
-            <p>Tổng Tiền:</p>
-            <p class="ml-[5px]"><?=$tong?></p>
         </div>
     </div>
     <div class="action w-full mx-auto mt-4 space-x-1 flex">

@@ -22,7 +22,7 @@
     <div class="container mt-11 sm:w-[500px] md:w-[400px] mx-auto ">
         <div class="text-center">
             <div class=" sm:text-2xl md:text-base font-semibold">
-                <p>Welcome to Fudo</p>
+                <p>Chỉnh sửa tài khoản</p>
             </div>
             <div class="mt-4">
                 <p class="sm:text-4xl md:text-[32px] font-[900]">
@@ -36,42 +36,42 @@
 
                 }
             ?>
-            <form action="index.php?act=edit_acc" method="POST">
+            <form action="index.php?act=edit_acc" method="post">
                 <div class="email">
                     <label for="email" class="block text-slate-600 font-[600]">Email</label>
                     <input 
-                            type="email" id="email" name="email" value="<?php echo $_SESSION['user']['user_email']?>"
-                            placeholder="John.snow@gmail.com"
+                            type="email" id="email" name="hello" readonly value="<?php echo $_SESSION['user']['user_email']?>"
                             class="border border-[#37A9CD] p-4 w-full mt-[11px] rounded-[5px]">
                 </div> <!--End .email-->
                 <div class="fullname">
-                    <label for="fullname" class="block text-slate-600 font-[600] mt-3">Fullname</label>
+                    <label for="fullname" class="block text-slate-600 font-[600] mt-3">User Name</label>
                     <input 
-                            type="text" id="fullName" name="fullName"  value="<?php echo $_SESSION['user']['user_name']?>"
+                            type="text" id="fullName" name="userName"  value="<?php echo $_SESSION['user']['user_name']?>"
                             placeholder="John.snow"
                             class="block border border-[#37A9CD] p-4 w-full mt-[11px] rounded-[5px]">
                 </div> <!--End .fullname-->
                 <div class="password">
-                    <label for="password" class="block text-slate-600 font-[600] mt-3">Password</label>
+                    <label for="password" class="block text-slate-600 font-[600] mt-3">Phone</label>
                     <input 
-                            type="text" id="password" name="password" value="<?php echo $_SESSION['user']['user_pass']?>"
-                            placeholder="*********"
+                            type="text" id="password" name="phone" value="<?php echo $_SESSION['user']['user_phone']?>"
+                            placeholder=""
                             class="block border border-[#37A9CD] p-4 w-full mt-[11px] rounded-[5px]">
                 </div> <!--End .password-->
                 <div class="repass">
                     <label for="repass" class="block text-slate-600 font-[600] mt-3"> 
-                        Re-Password
+                        Address
                     </label>
                     <input 
-                            type="text" id="repass" name="repass" value="<?php echo $_SESSION['user']['user_repass']?>"
-                            placeholder="*********"
+                            type="text" id="repass" name="address" value="<?php echo $_SESSION['user']['address']?>"
+                            placeholder="Your Address"
                             class="block border border-[#37A9CD] p-4 w-full mt-[11px] rounded-[5px]">
                 </div> <!--End .repass-->
 
-                <div class="mt-8 sm:text-2xl md:text-base ">
-                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['user_id']?>">
-                    <input class="py-4 w-full px-[154px] bg-[#37A9CD] text-[#FFFFFF] font-[600] rounded-[5px] "
-                           type="submit" name="edit_acc" value="Update">
+                <div class="mt-8 sm:text-2xl md:text-base bg-[#37A9CD] ">
+                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']?>">
+                    <input type="hidden" name="password" value="<?php echo $_SESSION['user']['password']?>">
+                    <input class="py-4 w-full px-[154px]  text-[#FFFF5F] font-[600] rounded-[5px] "
+                     type="submit" name="update_acc" value="Update">
                 </div>
             </form>
             <?php if(isset($thong_bao)) echo $thong_bao?>
