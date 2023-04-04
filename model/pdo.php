@@ -1,24 +1,21 @@
 <?php
-// Hàm kết nối với database và thực thi
-function connect($query)
-{
-    $connnect = new PDO("mysql:host=localhost;dbname=du_an_1;charset=utf8", "root", "");
-    $stmt = $connnect->prepare($query);
-    $stmt->execute();
-    return $stmt;
-}
-// Hàm lấy tất cả dữ liệu
-function getAll($query)
-{
-    $result = connect($query)->fetchAll();
-    return $result;
-}
-// Hàm lấy ra 1 hàng dữ liệu
-function getOne($query)
-{
-    $result = connect($query)->fetch();
-    return $result;
-}
+    // Hàm kết nối với database và thực thi
+    function connect($query){
+        $connnect = new PDO("mysql:host=localhost;dbname=duan_1;charset=utf8","root","");
+        $stmt = $connnect ->prepare($query);
+        $stmt -> execute();
+        return $stmt;
+    }
+    // Hàm lấy tất cả dữ liệu
+    function getAll($query){
+        $result = connect($query)->fetchAll();
+        return $result;
+    }
+    // Hàm lấy ra 1 hàng dữ liệu
+    function getOne($query){
+        $result = connect($query) -> fetch();
+        return $result;
+    }
 
 function show_array($arr)
 {
@@ -29,9 +26,8 @@ function show_array($arr)
 
 ?>
 <?php
-function pdo_get_connection()
-{
-    $dburl = "mysql:host=localhost;dbname=du_an_1;charset=utf8";
+function pdo_get_connection(){
+    $dburl = "mysql:host=localhost;dbname=duan_1;charset=utf8";
     $username = 'root';
     $password = '';
 
