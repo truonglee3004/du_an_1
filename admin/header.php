@@ -20,9 +20,9 @@
     </style>
 </head>
 <body>  
-    <div class="container bg-[#727272] max-w-full mx-auto py-4">
+    <div class="container bg-[#f3f3f3] max-w-full mx-auto py-4">
         <div class="main w-11/12 mx-auto">
-            <p class="p-4 text-5xl text-[#F54748] bg-[#5a5858] rounded-md">ADMIN</p>
+            <p class="p-4 text-5xl text-[#F54748] bg-[#faf5f5] rounded-md">ADMIN</p>
             <div class="menu my-6 py-2 text-red-800 bg-[#FFC0CB] rounded-md">
                 <nav>
                     <ul class="pl-4 flex items-center space-x-10 text-xl ">
@@ -33,16 +33,19 @@
                             <a href="index.php?act=add_cate">Danh Mục</a>
                         </li>
                         <li class="hover:underline">
-                            <a href="index_admin.php?act=add_pro">Sản Phẩm</a>
+                            <a href="index.php?act=add_pro">Sản Phẩm</a>
                         </li>
                         <li class="hover:underline">
-                            <a href="index_admin.php?act=add_customer">Khách Hàng</a>
+                            <a href="index.php?act=list_user">Khách Hàng</a>
                         </li>
                         <li class="hover:underline">
-                            <a href="index_admin.php?act=commnet">Bình Luận</a>
+                            <a href="index.php?act=list_order">Đơn Hàng</a>
                         </li>
                         <li class="hover:underline">
-                            <a href="index_admin.php?act=statistic">Thống Kê</a>
+                            <a href="index.php?act=commnet">Bình Luận</a>
+                        </li>
+                        <li class="hover:underline">
+                            <a href="index.php?act=statistic">Thống Kê</a>
                         </li>
                     </ul>
                 </nav>

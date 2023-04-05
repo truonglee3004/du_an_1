@@ -4,6 +4,7 @@ session_start();
 include './model/pdo.php';
 include './model/model_product.php';
 include './model/model_catalog.php';
+include './model/model_cart.php';
 include './model/model_user.php';
 include './view/header.php';
 
