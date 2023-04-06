@@ -14,7 +14,7 @@
     <table class="w-full mx-auto ">
         <tr>
             <p class="p-3 text-[40px] border rounded-md pt-[58px]">
-                CHI TIẾT ĐƠN HÀNG
+                CHI TIẾT ĐƠN HÀNG SP-00<?=$detail_bill[0]['order_id'];?>
             </p>
         </tr>
         <tr class="py-2 text-center text-black text-[28px]" >
@@ -25,9 +25,10 @@
             <td title="Tên loại hàng" class="w-[15%]">TOTAL CASH</td>
         </tr>
         <?php
+            $tong = 0;
             foreach ($detail_bill as $bill){
                 extract($bill);
-            
+                $tong += $payment;
         ?>
             <tr class="show ">
                 <td class="text-center"><img class="w-[200px] h-[250px]" src="img/<?=$pro_image?>" alt=""></td>  
@@ -50,7 +51,7 @@
             <p class="text-[24px]">CHÚ THÍCH</p>
         </div>
         <div class="text-[black] font-[600] texx-[24px] flex">
-            <p>Tổng Tiền:</p>
+            <p>Tổng Tiền:<?=$tong?></p>
             <p class="ml-[5px]"></p>
         </div>
     </div>

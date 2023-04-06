@@ -38,7 +38,7 @@
         <input type="button" onclick="location.href='index.php?act=add_cate'" value="Thêm mới danh mục">
         <input type="button" onclick="location.href='index.php?act=add_pro'" value="Thêm mới sản phẩm">
         <input class=" border px-3 py-1 rounded-[4px] bg-[#FFC0CB] hover:font-[500]"
-                       type="button" onclick="location.href='index_admin.php?act=list_pro'" value="Danh sách sản phẩm ">
+                       type="button" onclick="location.href='index.php?act=list_pro'" value="Danh sách sản phẩm ">
     </div> <!-- End .action -->
 </div> <!-- End .list_cate-->
 <!DOCTYPE html>
