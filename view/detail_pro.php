@@ -59,4 +59,17 @@
             <?php }?>       
             </div>
         </div> <!-- End .similar_pro -->
-    </div><!-- End .container-->    
+        <div class="">
+	<div class="text-[22px] font-bold text-gray-700 mb-5 ml-[120px] mt-[50px] ">
+    	BÌNH LUẬN
+    </div>
+    <div class="ml-[120px] rounded">
+        <form name="">
+        	<input type="text" name="name" placeholder="Name..."/></br></br>
+            <textarea name="comments" placeholder="nội dung bình luận..." style="width:635px; height:100px;"></textarea></br></br>
+            <a href="#" onClick="commentSubmit()" class="w-[30px] bg-slate-700 text-white rounded">Gửi</a></br>
+        </form>
+    </div>
+    </div>
+    </div><!-- End .container-->   
+   

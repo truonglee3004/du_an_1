@@ -1,7 +1,7 @@
 <?php
     // Hàm kết nối với database và thực thi
     function connect($query){
-        $connnect = new PDO("mysql:host=localhost;dbname=duan_1;charset=utf8","root","");
+        $connnect = new PDO("mysql:host=localhost;dbname=du_an_1;charset=utf8","root","");
         $stmt = $connnect ->prepare($query);
         $stmt -> execute();
         return $stmt;
@@ -23,11 +23,16 @@ function show_array($arr)
     print_r($arr);
     echo "</pre>";
 }
+$con=mysqli_connect("localhost","root","","du_an_1");
+		if (mysqli_connect_errno())
+		  {
+		  echo "kết nối thất bại: " . mysqli_connect_error();
+		  }
 
 ?>
 <?php
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=duan_1;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=du_an_1;charset=utf8";
     $username = 'root';
     $password = '';
 
