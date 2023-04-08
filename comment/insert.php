@@ -4,6 +4,7 @@ $name = $_REQUEST['name'];
 $content = $_REQUEST['content'];
 
 
+
 require("../model/pdo.php");
 
 mysqli_query($con, "INSERT INTO comments(name, comments) VALUES('$name','$content')");

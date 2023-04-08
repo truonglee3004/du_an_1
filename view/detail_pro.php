@@ -67,7 +67,7 @@
         <form name="">
         	<input type="text" name="name" placeholder="Name..."/></br></br>
             <textarea name="comments" placeholder="nội dung bình luận..." style="width:635px; height:100px;"></textarea></br></br>
-            <a href="#" onClick="commentSubmit()" class="w-[30px] bg-slate-700 text-white rounded">Gửi</a></br>
+            <a href="#" onClick="commentSubmit()" class="w-[40px] h-[40px] bg-slate-700 text-white rounded">Gửi</a></br>
         </form>
     </div>
     </div>

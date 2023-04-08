@@ -23,7 +23,7 @@ function show_array($arr)
     print_r($arr);
     echo "</pre>";
 }
-$con=mysqli_connect("localhost","root","","du_an_1");
+    $con=mysqli_connect("localhost","root","","du_an_1");
 		if (mysqli_connect_errno())
 		  {
 		  echo "kết nối thất bại: " . mysqli_connect_error();
@@ -125,3 +125,4 @@ function pdo_query_value($sql)
         unset($conn);
     }
 }
+?>

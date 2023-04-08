@@ -7,4 +7,5 @@ mysqli_query($con,"DELETE FROM comments WHERE id='$id'");
 header("location: commentfrom.php");
 }
 mysqli_close($con);
+
 ?>

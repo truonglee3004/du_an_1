@@ -38,7 +38,7 @@
     </div>
     <div class="comment_input">
         <form name="form1">
-        	<input type="text" name="name" placeholder="Name..."/></br></br>
+        	<input type="text" name="name" placeholder="Tên..."/></br></br>
             <textarea name="comments" placeholder="nội dung bình luận..." style="width:635px; height:100px;"></textarea></br></br>
             <a href="#" onClick="commentSubmit()" class="button">Gửi</a></br>
         </form>
