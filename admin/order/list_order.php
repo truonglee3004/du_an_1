@@ -42,6 +42,7 @@
                 <td class="text-center leading-9">
                     <a href="index.php?act=edit_order&order_id=<?php echo $order['order_id']?>">Cập Nhật Trạng Thái</a>
                     <a href="index.php?act=detail_order&order_id=<?php echo $order['order_id']?>">Xem Chi Tiết</a>
+                    <a href="index.php?act=delete_order&order_id=<?php echo $order['order_id']?>">Xóa</a>
                 </td>
             </tr>
             <?php

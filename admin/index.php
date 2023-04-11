@@ -2,6 +2,7 @@
     include "../model/pdo.php";
     include "../model/model_catalog.php";
     include "../model/model_product.php";
+    include "../model/model_thongke.php";
     include "header.php";
 // Controller
     if(isset($_GET['act'])){
@@ -52,7 +53,7 @@
                 if(isset($_POST['add_pro'])){
                     $pro_name = $_POST['ten_san_pham'];
                     $pro_price = $_POST['don_gia'];
-                    // $giam_gia = $_POST['giam_gia'];
+                    $giam_gia = $_POST['giam_gia'];
                     $pro_desc = $_POST['mo_ta'];
                     $chat_lieu = $_POST['chat_lieu'];
                     $cate_id = $_POST['category'];
@@ -66,7 +67,7 @@
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
-                        add_pro($pro_name, $pro_price, $target_file, $pro_desc, $chat_lieu, $cate_id);
+                        add_pro($pro_name, $pro_price, $target_file, $pro_desc, $giamgia, $chat_lieu, $cate_id);
                         $thong_bao = "<span class = 'text-red-500'>Thêm sản phẩm thành công </span>";
                         header("location:index_admin.php?act=list_pro");
                         
@@ -103,11 +104,12 @@
                     $pro_id = $_POST['pro_id'];
                     $pro_name = $_POST['ten_san_pham'];
                     $pro_price = $_POST['don_gia'];
-                    // $giam_gia = $_POST['giam_gia'];
+                    $discount = $_POST['giam_gia'];
                     $pro_desc = $_POST['mo_ta'];
                     $chat_lieu = $_POST['chat_lieu'];
                     $cate_id = $_POST['category'];
-                    $target_dir = "../upload/";
+
+                    $target_dir = "../img/";
                     $target_file = $target_dir . $_FILES['hinh_anh']['name'];
                     if(empty($pro_name)){ // Kiểm tra tên sản phẩm có để trống hay không
                         $error['empty_pro_name'] = "<span class='text-red-600'>*Không cập nhật tên sản phẩm trống</span>";
@@ -117,7 +119,7 @@
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
-                        update_pro($pro_id, $pro_name, $pro_price, $target_file, $pro_desc, $chat_lieu, $cate_id);
+                        update_pro($pro_id, $pro_name, $pro_price, $discount, $target_file, $pro_desc, $chat_lieu, $cate_id);
                         $thong_bao = "Cập nhật sản phẩm thành công";
                     } 
                 }
@@ -147,6 +149,76 @@
                 $list_binhluan = queryAllbl(0);
                 include "binhluan/list_binhluan.php";
                 break;
+            case 'list_user': // Danh sách danh mục
+                $list_user = queryAllUser();
+                include "user/list_user.php";
+                break;
+            case 'delete_user': // Xóa danh mục
+                if(isset($_GET['user_id']) && $_GET['user_id'] > 0){
+                    $user = $_GET['user_id'];
+                    delete_user($user);
+                }
+// Sau khi xóa xong thì phải select lại danh sách danh mục
+                $list_user = queryAllUser();
+                include "user/list_user.php";
+                break;
+            case 'edit_user': // Lấy dữ liệu theo id rồi đổ ra 
+                if(isset($_GET['user_id']) && $_GET['user_id'] > 0){
+                    $user_id = $_GET['user_id'];
+                    $one_user = queryOneUserByID($user_id);
+                }
+                include "user/edit_user.php";
+                break;    
+            case 'update_user': // Cập nhật danh mục
+                if(isset($_POST['edit_user'])){
+                    $user_id = $_POST['user_id'];
+                    $user_name = $_POST['user_name'];
+                    $user_email = $_POST['user_email'];
+                    $user_phone = $_POST['user_phone'];
+                    $address = $_POST['address'];
+                    update_user($user_id, $user_name,$user_email,$user_phone,$address);
+                    $thong_bao = "*Cập nhật loại hàng thành công"; 
+                }
+                $list_user = queryAllUser();
+                include "user/list_user.php";
+                break;    
+            case 'list_order': // Danh sách danh mục
+                $list_order = queryAllOrder();
+                include "order/list_order.php";
+                break;
+            case 'delete_order': // Xóa danh mục
+                if(isset($_GET['user_id']) && $_GET['user_id'] > 0){
+                    $user = $_GET['user_id'];
+                    delete_user($user);
+                }
+// Sau khi xóa xong thì phải select lại danh sách danh mục
+                $list_user = queryAllUser();
+                include "order/list_order.php";
+                break;
+            case 'edit_order': // Lấy dữ liệu theo id rồi đổ ra 
+                if(isset($_GET['order_id']) && $_GET['order_id'] > 0){
+                    $order_id = $_GET['order_id'];
+                    $one_order = queryOneOrderByID($order_id);
+                }
+                include "order/edit_order.php";
+                break;    
+            case 'update_order': // Cập nhật danh mục
+                if(isset($_POST['edit_user'])){
+                    $order_id = $_POST['order_id'];
+                    $status = $_POST['status'];
+                    update_order($order_id,$status);
+                    $thong_bao = "*Cập nhật loại hàng thành công"; 
+                }
+                $list_order = queryAllOrder();;
+                include "order/list_order.php";
+                break;
+            case 'detail_order': // Lấy dữ liệu theo id rồi đổ ra 
+                if(isset($_GET['order_id']) && $_GET['order_id'] > 0){
+                    $order_id = $_GET['order_id'];
+                    $one_order = queryOneBIll($order_id);
+                }
+                include "order/order_item.php";
+                break;      
             default:
                 include "body.php";
                 break;

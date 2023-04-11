@@ -13,7 +13,7 @@
         connect($delete_pro);
     }
     function delete_all_cart($user_id ){
-        $delete_pro = "DELETE FROM `transaction` WHERE id = '{$user_id}'";
+        $delete_pro = "DELETE FROM `transaction` WHERE user_id = '{$user_id}'";
         connect($delete_pro);
     }
     function add_amout($card_id){ 
@@ -100,5 +100,14 @@
     function update_order($order_id,$status){ 
         $update_cate = "UPDATE `orders` SET status = '{$status}' WHERE order_id = '{$order_id}'";
         connect($update_cate);
+    }
+    function delete_bill($id_order){
+        $delete_pro = "DELETE FROM `orders` WHERE order_id = '{$id_order}'";
+        connect($delete_pro);
+    }
+
+    function delete_order_item($order_id){
+        $delete_pro = "DELETE FROM `orders_item` WHERE order_id = '{$order_id}'";
+        connect($delete_pro);
     }
 ?>

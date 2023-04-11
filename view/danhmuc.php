@@ -12,33 +12,33 @@
 
 <body class="bg-gray-300">
   <section class="max-w-7xl mx-auto grid grid-cols-3 mt-6 gap-4">
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60 ">
+      <a class="block w-full" href=" ">
         <img class="rounded-md mx-auto my-auto " src="./img/Nike-Logo 1.png" alt="" />
       </a>
     </div>
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60 ">
+      <a class="block w-full" href="">
         <img class="rounded-md mx-auto my-auto " src="./img/adidas 1.png" alt="" />
       </a>
     </div>
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60  ">
+      <a class="block w-full" href="">
         <img class="rounded-md mx-auto my-auto " src="./img/puma.png" alt="" />
       </a>
     </div>
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60 ">
+      <a class="block w-full" href="">
         <img class="rounded-md mx-auto my-auto " src="./img/lining 1.png" alt="" />
       </a>
     </div>
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60 ">
+      <a class="block w-full" href="">
         <img class="rounded-md mx-auto my-auto " src="./img/fila.png" alt="" />
       </a>
     </div>
-    <div class="justify-center  bg-white w-96 h-60 ">
-      <a href="">
+    <div class="flex place-items-center bg-white w-96 h-60 ">
+      <a class="block w-full" href="">
         <img class="rounded-md mx-auto my-auto " src="./img/reebok.png" alt="" />
       </a>
     </div>

@@ -37,8 +37,8 @@
             <!-- <td class="text-center">Giảm Giá</td> -->
             <!-- <td class="text-center w-[110px]">Ngày Tạo</td> -->
             <td class="w-[10%]">SIZE</td>   
+            <td class="w-[5%]">Số Lượng</td>   
             <td class="w-[21%]">Mô Tả</td>
-
             <td class="w-[6%]">Thao Tác</td>
         </tr>
         <?php
@@ -58,6 +58,7 @@
                 <td class="text-center"><?php echo $pro['price']." <span class='font-[500]'>VNĐ</span>"?></td>
                 <!-- <td class="text-center"><?php echo $pro['discount']." VNĐ" ?></td> -->
                 <td class="px-2"><?php echo $pro['size']?></td>
+                <td class="px-2"><?php echo $pro['amount']?></td>
                 <td class="px-2"><?php echo $pro['content']?></td>
                 <td class="text-center leading-9">
                     <a href="index.php?act=edit_pro&pro_id=<?php echo $pro['id']?>">Sửa</a>

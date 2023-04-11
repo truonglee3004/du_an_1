@@ -11,10 +11,24 @@
                 <div>
                     <label for="category">Trạng Thái Đơn Hàng </label>
                     <select name="status" id="category" class="w-full px-3 border rounded-[4px] h-[40px]">
+                        <?php if($one_order['status'] == 0){?>
                         <option value="0">Đơn hàng mới</option>
                         <option value="1">Đang xử lý</option>
                         <option value="2">Đang giao hàng</option>
                         <option value="3">Hoàn Tất</option>
+                        <?php }?>
+                        <?php if($one_order['status'] == 1){?>
+                        <option value="1">Đang xử lý</option>
+                        <option value="2">Đang giao hàng</option>
+                        <option value="3">Hoàn Tất</option>
+                        <?php }?>
+                        <?php if($one_order['status'] == 2){?>
+                        <option value="2">Đang giao hàng</option>
+                        <option value="3">Hoàn Tất</option>
+                        <?php }?>
+                        <?php if($one_order['status'] == 3){?>
+                        <option value="3">Hoàn Tất</option>
+                        <?php }?>
                     </select>
                 </div>
             </div>
