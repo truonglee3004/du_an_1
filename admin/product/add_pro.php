@@ -24,6 +24,13 @@
                            placeholder="Vui lòng nhập giá sản phẩm..">
                     <?php echo isset($error['empty_pro_price'])?$error['empty_pro_price']:" "?>
                 </div>
+                <div>
+                    <label for="don_gia">Số Lượng</label>
+                    <input class="border w-full rounded-[4px] px-3 h-[40px]"
+                           type="number"  name="soluong" id ="don_gia"
+                           placeholder="Vui lòng nhập giá sản phẩm..">
+                    <?php echo isset($error['empty_pro_price'])?$error['empty_pro_price']:" "?>
+                </div>
 
                 <div>
                     <label for="ten_san_pham">Tên sản phẩm</label>

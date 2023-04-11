@@ -15,13 +15,13 @@
         <tr class="py-2 text-center text-black text-[28px]" >
             <td title="Mã loại hàng" class="w-[10%]">Mã Đơn Hàng</td>
             <td title="Tên loại hàng" class="w-[10%]">Ngày Đặt</td>
-            <td title="Mã loại hàng" class="w-[10%]">Người Đặt</td>
+            <td title="Mã loại hàng" class="w-[7%]">Người Đặt</td>
             <td title="Mã loại hàng" class="w-[10%]">Địa chỉ</td>
             <td title="Tên loại hàng" class="w-[10%]">Số Điện Thoại</td>
-            <td title="Tên loại hàng" class="w-[15%]">Hình Thức Thanh Toán</td>
-            <td title="Tên loại hàng" class="w-[15%]">Trạng Thái Đơn Hàng </td>
+            <td title="Tên loại hàng" class="w-[10%]">Hình Thức Thanh Toán</td>
+            <td title="Tên loại hàng" class="w-[10%]">Trạng Thái Đơn Hàng </td>
             <td title="Tên loại hàng" class="w-[10%]">Thành Tiền</td>
-            <td title="Tên loại hàng" class="w-[10%]">Thao Tác</td>
+            <td title="Tên loại hàng" class="w-[22%]">Thao Tác</td>
         </tr>
         <?php
             $tong = 0;
@@ -40,7 +40,15 @@
                 <td class="text-center"><?=$status?></td>  
                 <td class="text-center"><?=$tong?>đ</td> 
                 <td class="text-center">
-                    <a href="index.php?act=detail_bill&bill_id=<?=$order_id?>">Chi tiết Đơn Hàng</a>
+                    <a class="bg-[orange] rounded-[20px] p-[10px] font-bold" href="index.php?act=detail_bill&bill_id=<?=$order_id?>">Chi tiết Đơn Hàng</a>
+                    <a class="bg-[orange] rounded-[20px] p-[10px] font-bold" href="<?php
+if ($status = "Đang giao hàng" || $status = "Hoàn Tất") {
+  echo "#";
+} else {
+  echo "index.php?act=delete_bill&bill_id=$order_id";
+}
+?>
+"><?php if($status = "Đang giao hàng" || $status = "Hoàn Tất") echo "Không thể hủy đơn hàng"; else echo"Hủy đơn hàng";?></a>
                 </td> 
             </tr>
         <?php

@@ -91,7 +91,7 @@
         </div>
         <nav class="flex items-center justify-center gap-x-7 mt-2">
             <a href="index.php" class="hover:text-orange-500 hover:no-underline uppercase">Home</a>
-            <a href="index.php?target=products" class="hover:text-orange-500 hover:no-underline uppercase">Products</a>
+            <a href="index.php?act=list_pro" class="hover:text-orange-500 hover:no-underline uppercase">Products</a>
             <a href="index.php?target=deal" class="hover:text-orange-500 hover:no-underline uppercase">Specials Deal</a>
             <a href="index.php?target=aboutus" class="hover:text-orange-500 hover:no-underline uppercase">About us</a>
             <a href="index.php?target=contact" class="hover:text-orange-500 hover:no-underline uppercase">Contact</a>

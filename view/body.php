@@ -14,90 +14,42 @@
         <h3>Special Deals</h3>
       </div>
       <div class="flex col-span-4 mt-12 justify-between">
-        <div class="bg-white rounded-md h-fit w-auto">
-          <div class="rounded-md">
-            <img src="./img/ezgif 2.png" alt="" />
+        <?php foreach($spd as $sp){
+          extract($sp) ?>
+        <div class="group bg-white rounded-md h-fit w-auto">
+          <div class="rounded-md w-[300px] h-[300px]">
+            <a href="index.php?act=detail_pro&pro_id=<?php echo $id?>"><img class="w-full h-[300px]" src="./img/<?=$image_link?>" alt="" /></a>
           </div>
           <div class="ml-2 pb-8">
             <div
               class="text-2xl mt-4 hover:text-orange-500 hover:no-underline w-fit"
             >
-              <a href="">Áo Thun Tập Luyện Techfit</a>
+              <a href="index.php?act=detail_pro&pro_id=<?php echo $id?>"><?=$pro_name?></a>
             </div>
             <div
               class="mt-2 text-gray-600 hover:text-orange-500 hover:no-underline w-fit"
             >
-              <a href="">Adidas</a>
+              <a>Nike</a>
             </div>
-            <div class="flex mt-3 gap-4">
-              <p class="text-red-500">722,000đ</p>
-              <del>850,000đ</del>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-md h-fit w-auto">
-          <div class="rounded-md">
-            <img src="./img/ezgif 2.png" alt="" />
-          </div>
-          <div class="ml-2 pb-8">
-            <div
-              class="text-2xl mt-4 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Áo Thun Tập Luyện Techfit</a>
-            </div>
-            <div
-              class="mt-2 text-gray-600 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Adidas</a>
-            </div>
-            <div class="flex mt-3 gap-4">
-              <p class="text-red-500">722,000đ</p>
-              <del>850,000đ</del>
+            <div class="flex">
+              <div class="flex">
+                <p class="line-through"><?=$price?></p>
+                <p class="ml-[100px]  text-red-500"><?php $price = $price - ($price * $discount / 100); echo $price ?></p>
+              </div>
+              <div class="hidden group-hover:block ml-[-183px] mt-[50px]">
+                <form class="bg-[orange] font-[700] text-center w-[200px] text-[18px]" action="<?php if(isset($_SESSION['user'])) echo "index.php?act=addtocard"; else echo "index.php?act=signin"?>" method="post">
+                    <input type="hidden" name="image" value="<?=$image_link?>">
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <input type="hidden" name="price" value="<?=$price?>">
+                    <input type="hidden" name="pro_name" value="<?=$pro_name?>">
+                    <input type="hidden" name="user" value="<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['id'] ?>">
+                    <input type="submit" name="addtocard" value="ADD TO CARD">
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        <div class="bg-white rounded-md h-fit w-auto">
-          <div class="rounded-md">
-            <img src="./img/ezgif 2.png" alt="" />
-          </div>
-          <div class="ml-2 pb-8">
-            <div
-              class="text-2xl mt-4 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Áo Thun Tập Luyện Techfit</a>
-            </div>
-            <div
-              class="mt-2 text-gray-600 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Adidas</a>
-            </div>
-            <div class="flex mt-3 gap-4">
-              <p class="text-red-500">722,000đ</p>
-              <del>850,000đ</del>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-md h-fit w-auto">
-          <div class="rounded-md">
-            <img src="./img/ezgif 2.png" alt="" />
-          </div>
-          <div class="ml-2 pb-8">
-            <div
-              class="text-2xl mt-4 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Áo Thun Tập Luyện Techfit</a>
-            </div>
-            <div
-              class="mt-2 text-gray-600 hover:text-orange-500 hover:no-underline w-fit"
-            >
-              <a href="">Adidas</a>
-            </div>
-            <div class="flex mt-3 gap-4">
-              <p class="text-red-500">722,000đ</p>
-              <del>850,000đ</del>
-            </div>
-          </div>
-        </div>
+        <?php }?>
       </div>
       <div class="flex items-center flex-col">
         <button
@@ -115,8 +67,8 @@
         <?php foreach($nike as $nk){
           extract($nk) ?>
         <div class="group bg-white rounded-md h-fit w-auto">
-          <div class="rounded-md">
-            <a href="index.php?act=detail_pro&pro_id=<?php echo $id?>"><img src="./img/<?=$image_link?>" alt="" /></a>
+          <div class="rounded-md w-[300px] h-[300px]">
+            <a href="index.php?act=detail_pro&pro_id=<?php echo $id?>"><img class="w-full h-[300px]" src="./img/<?=$image_link?>" alt="" /></a>
           </div>
           <div class="ml-2 pb-8">
             <div

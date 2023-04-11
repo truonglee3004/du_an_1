@@ -45,7 +45,7 @@
                             <a href="index.php?act=commnet">Bình Luận</a>
                         </li>
                         <li class="hover:underline">
-                            <a href="index.php?act=statistic">Thống Kê</a>
+                            <a href="index.php?act=thongke">Thống Kê</a>
                         </li>
                     </ul>
                 </nav>

@@ -14,10 +14,15 @@ include './view/header.php';
 $nike = query_nike();
 $adidas = query_adidas();
 $puma = query_puma();
+$spd = query_spd();
 $list_cata = queryAll();
+$list_pro = queryAllproduct();
 if(isset($_GET['act']) && !empty($_GET['act'])){
     $act = $_GET['act'];
     switch ($act) { 
+        case 'list_pro':
+            include "view/list_pro.php";
+            break;
         case 'detail_pro':
             if(isset($_GET['pro_id']) && ($_GET['pro_id'] > 0)){
                 $pro_id = $_GET['pro_id'];
@@ -105,7 +110,7 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     delete_cart($card_id);
                 }
                 else{
-                    delete_all_cart($_SESSION['users']['user_id']);
+                    delete_all_cart($_SESSION['user']['id']);
                 }
                 $list_cart = queryAllCart($_SESSION['user']['id']);
                 header("Location:index.php?act=viewcard");
@@ -121,25 +126,6 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     }
                 }
                 $list_cart = queryAllCart($_SESSION['user']['id']);
-                case 'billconfirm':
-                    if(isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])){
-                        $user_id = $_POST['user_id'];
-                        $email = $_POST['email'];
-                        $user_name = $_POST['userName'];
-                        $phone = $_POST['phone'];
-                        $address = $_POST['address'];
-                        $tong = $_POST['tong'];
-                        $pttt = $_POST['pttt'];
-                        $date = date('h:i:sa d/m/Y');
-                        $list_cart = queryAllCart($_SESSION['user']['id']);
-                        $id_order = add_bill($user_id,$email,$user_name,$phone,$address,$tong,$date,$pttt);
-                        foreach($list_cart as $cart){
-                            extract($cart);
-                            add_ctbil($user_id, $pro_id, $pro_name, $pro_price, $pro_image, $amount, $payment, $id_order);
-                        }
-                    }
-                break;
-                break;
                 
             case 'viewcard':
                 include "view/card/viewcard.php";
@@ -160,10 +146,21 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     $list_cart = queryAllCart($_SESSION['user']['id']);
                     $id_order = add_bill($user_id,$email,$user_name,$phone,$address,$tong,$date,$pttt);
                     foreach($list_cart as $cart){
+
                         extract($cart);
+                        $product = queryOnePro($pro_id);
+                        if($amount > $product['amount']){
+                            delete_bill($id_order);
+                            $thongbao = "Sản phẩm <p class='text-red-600 font-[700] px-[5px]'>".$product['pro_name']."</p> của chúng tôi chỉ còn <p class='text-red-600 font-[700] px-[5px]'>".$product['amount']."</p> sản phẩm, quý khách vui lòng giảm số lượng sản phẩm";
+                            include "view/card/bill.php";
+                        }
+                        else{
                         add_ctbil($user_id, $pro_id, $pro_name, $pro_price, $pro_image, $amount, $payment, $id_order);
+                        update_product($pro_id, $amount);
+                        header("Location:index.php?act=mybill");
+                        }
                     }
-                    header("Location:index.php?act=mybill");
+
                 }
             break;
             case 'mybill':
@@ -177,6 +174,19 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     include "view/card/detail_bill.php";
                 } else{
                     include "view/body.php";
+                }
+                break;
+            case 'delete_bill': 
+                if(isset($_GET['bill_id']) && $_GET['bill_id'] > 0){
+                    $bill_id = $_GET['bill_id'];
+                    $detail_bill = queryOneBill($bill_id);
+                    foreach($detail_bill as $bill){
+                        extract($bill);
+                        back_product($pro_id, $amount);
+                    }
+                    delete_bill($bill_id);
+                    delete_order_item($bill_id);
+                    header("Location:index.php?act=mybill");
                 }
                 break;
         } 

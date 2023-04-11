@@ -55,12 +55,6 @@
             <p class="ml-[5px]"></p>
         </div>
     </div>
-    <div class="action w-full mx-auto mt-4 space-x-1 flex">
-       <a href="index.php?act=bill">Đặt Hàng</a>
-                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        href="index.php?act=delete_card">Xóa Giỏ Hàng</a>
-
-    </div> <!-- End .action -->
 </div> <!-- End .list_cate-->
 </div>
 

@@ -4,6 +4,7 @@
     include "../model/model_user.php";
     include "../model/model_cart.php";
     include "../model/model_product.php";
+    include "../model/model_thongke.php";
     include "header.php";
 // Controller
     if(isset($_GET['act'])){
@@ -54,6 +55,7 @@
                 if(isset($_POST['add_pro'])){
                     $pro_name = $_POST['ten_san_pham'];
                     $pro_price = $_POST['don_gia'];
+                    $amount = $_POST['soluong'];
                     $giam_gia = $_POST['giam_gia'];
                     $pro_desc = $_POST['mo_ta'];
                     $chat_lieu = $_POST['size'];
@@ -67,7 +69,7 @@
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
-                        add_pro($pro_name, $pro_price, $target_file, $pro_desc, $giamgia, $chat_lieu, $cate_id);
+                        add_pro($pro_name, $pro_price,$amount, $target_file, $pro_desc, $giamgia, $chat_lieu, $cate_id);
                         $thong_bao = "<span class = 'text-red-500'>Thêm sản phẩm thành công </span>";
                         header("location:index.php?act=list_pro");
                         
@@ -104,12 +106,13 @@
                     $pro_id = $_POST['pro_id'];
                     $pro_name = $_POST['ten_san_pham'];
                     $pro_price = $_POST['don_gia'];
+                    $amount = $_POST['soluong'];
                     $discount = $_POST['giam_gia'];
                     $pro_desc = $_POST['mo_ta'];
                     $chat_lieu = $_POST['chat_lieu'];
                     $cate_id = $_POST['category'];
 
-                    $target_dir = "../img/";
+                    $target_dir = "";
                     $target_file = $target_dir . $_FILES['hinh_anh']['name'];
                     if(empty($pro_name)){ // Kiểm tra tên sản phẩm có để trống hay không
                         $error['empty_pro_name'] = "<span class='text-red-600'>*Không cập nhật tên sản phẩm trống</span>";
@@ -119,7 +122,7 @@
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
-                        update_pro($pro_id, $pro_name, $pro_price, $discount, $target_file, $pro_desc, $chat_lieu, $cate_id);
+                        update_pro($pro_id, $pro_name, $pro_price,$amount, $discount, $target_file, $pro_desc, $chat_lieu, $cate_id);
                         $thong_bao = "Cập nhật sản phẩm thành công";
                     } 
                 }
@@ -187,12 +190,13 @@
                 include "order/list_order.php";
                 break;
             case 'delete_order': // Xóa danh mục
-                if(isset($_GET['user_id']) && $_GET['user_id'] > 0){
-                    $user = $_GET['user_id'];
-                    delete_user($user);
+                if(isset($_GET['order_id']) && $_GET['order_id'] > 0){
+                    $order_id = $_GET['order_id'];
+                    delete_bill($order_id);
+                    delete_order_item($order_id);
                 }
 // Sau khi xóa xong thì phải select lại danh sách danh mục
-                $list_user = queryAllUser();
+                $list_order = queryAllOrder();
                 include "order/list_order.php";
                 break;
             case 'edit_order': // Lấy dữ liệu theo id rồi đổ ra 
@@ -218,7 +222,11 @@
                     $one_order = queryOneBIll($order_id);
                 }
                 include "order/order_item.php";
-                break;      
+                break;  
+            case 'thongke':
+                $thongke = thongke();
+                include "thongke/bieudo.php";
+                break;    
             default:
                 include "body.php";
                 break;

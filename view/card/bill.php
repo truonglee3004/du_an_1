@@ -74,6 +74,7 @@
                 <p class="p-3 text-[40px] border rounded-md pt-[58px]">
                     SHOPPING CART
                 </p>
+                <div class="flex"><p><?php if(isset($thongbao)) echo $thongbao ;?></p></div>
             </tr>
             <tr class="py-2 text-center text-black text-[28px]" >
                 <td title="Mã loại hàng" class="w-[15%]"></td>
