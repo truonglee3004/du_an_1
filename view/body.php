@@ -105,7 +105,7 @@
         <button
           class="mt-20 bg-white w-32 h-10 text-2xl text-center font-semibold"
         >
-          <a href="">More</a>
+          <a href="index.php?act=list_pro&cate_id=1">More</a>
         </button>
       </div>
     </section>
@@ -155,7 +155,7 @@
         <button
           class="mt-20 bg-white w-32 h-10 text-2xl text-center font-semibold"
         >
-          <a href="">More</a>
+          <a href="index.php?act=list_pro&cate_id=2">More</a>
         </button>
       </div>
     </section>
@@ -205,7 +205,7 @@
         <button
           class="mt-20 bg-white w-32 h-10 text-2xl text-center font-semibold"
         >
-          <a href="">More</a>
+          <a href="index.php?act=list_pro&cate_id=3">More</a>
         </button>
       </div>
     </section>
