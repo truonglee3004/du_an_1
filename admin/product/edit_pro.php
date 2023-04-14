@@ -12,7 +12,7 @@
                     <label>Mã sản phẩm</label>
                     <input class="border w-full rounded-[4px] px-3 h-[40px]"
                            type="text" disabled name="ma_san_pham" id="ma_san_pham"
-                           placeholder="Auto number" value="<?php echo $one_pro['id']?>">
+                           placeholder="Auto number" value="<?php echo $one_pro['pro_id']?>">
                 </div>
                 <div>
                     <label for="don_gia">Đơn giá</label>
@@ -26,7 +26,6 @@
                     <input class="border w-full rounded-[4px] px-3 h-[40px]" value="<?php echo $one_pro['amount']?>"
                            type="text"  name="soluong" id="don_gia"
                            placeholder="Vui lòng nhập giá sản phẩm..">
-                    <?php echo isset($error['empty_donGia'])?$error['empty_donGia'] :"" ?>
                 </div>
                 <div>
                     <label for="ten_san_pham">Tên sản phẩm</label>
@@ -75,7 +74,7 @@
                           placeholder="Mô tả sản phẩm..."
                           ><?php echo $one_pro['content']?></textarea>
             </div>
-            <input type="hidden" name="pro_id" value="<?php echo $one_pro['id']?>"> <!-- Lấy id của sản phẩm-->
+            <input type="hidden" name="pro_id" value="<?php echo $one_pro['pro_id']?>"> <!-- Lấy id của sản phẩm-->
             <input class=" border px-3 py-1  mt-3 rounded-[4px] bg-[#FFC0CB] hover:font-[500]"
                    type="submit" value="Cập nhật" name="edit_pro">
             <input class=" border px-3 py-1 mt-3 rounded-[4px] bg-[#FFC0CB] hover:font-[500]"

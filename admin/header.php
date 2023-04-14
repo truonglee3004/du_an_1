@@ -27,7 +27,7 @@
                 <nav>
                     <ul class="pl-4 flex items-center space-x-10 text-xl ">
                         <li class="hover:underline">
-                            <a href="index_admin.php">Trang Chủ</a>
+                            <a href="../index.php">Trang Chủ</a>
                         </li>
                         <li class="hover:underline">
                             <a href="index.php?act=add_cate">Danh Mục</a>

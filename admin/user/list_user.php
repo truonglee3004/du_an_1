@@ -40,6 +40,7 @@
         }
         ?>
     </table>
+    <?php if(isset($thong_bao)) echo $thong_bao ?>
 </div>
 
 <!DOCTYPE html>

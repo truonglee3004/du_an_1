@@ -46,7 +46,7 @@
             ?>
             <tr class="show hover:bg-[#FFEEEE]">
                 <td class="text-center"><input type="checkbox"></td>
-                <td class="text-center"><?php echo $pro['id']?></td>
+                <td class="text-center"><?php echo $pro['pro_id']?></td>
                 <td class="px-2"><?php echo $pro['pro_name']?></td>
                 <td class="px-2">
                     <?php foreach($list_cate as $cate){
@@ -61,9 +61,9 @@
                 <td class="px-2"><?php echo $pro['amount']?></td>
                 <td class="px-2"><?php echo $pro['content']?></td>
                 <td class="text-center leading-9">
-                    <a href="index.php?act=edit_pro&pro_id=<?php echo $pro['id']?>">Sửa</a>
+                    <a href="index.php?act=edit_pro&pro_id=<?php echo $pro['pro_id']?>">Sửa</a>
                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        href="index.php?act=delete_pro&pro_id=<?php echo $pro['id']?>">Xóa</a>
+                        href="index.php?act=delete_pro&pro_id=<?php echo $pro['pro_id']?>">Xóa</a>
                 </td>
             </tr>
             <?php

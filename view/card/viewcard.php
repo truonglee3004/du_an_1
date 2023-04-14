@@ -59,7 +59,7 @@
     <div class="action w-full mx-auto mt-4 space-x-1 flex justify-between">
     <a class="bg-[orange] px-[20px] py-[10px] rounded-[15px]" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
                         href="index.php?act=delete_card">Xóa Giỏ Hàng</a>
-       <a class="bg-[orange] px-[20px] py-[10px] rounded-[15px]" href="index.php?act=bill">Đặt Hàng</a>
+       <a class="bg-[orange] px-[20px] py-[10px] rounded-[15px]" href="<?php if (count($list_cart) == 0) echo "#"; else echo"index.php?act=bill"?>">Đặt Hàng</a>
                     
 
     </div> <!-- End .action -->

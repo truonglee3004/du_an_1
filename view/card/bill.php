@@ -59,6 +59,7 @@
                             placeholder="Your Address"
                             class="block border border-[#37A9CD] p-4 w-full mt-[11px] rounded-[5px]">
                 </div> <!--End .repass-->
+                <div><?php if(isset($emp)) echo $emp ;?></div>
                 <div class="radio">
                     <label for="repass" class="block text-slate-600 font-[600] mt-3"> 
                         Phương Thức Thanh Toán

@@ -29,7 +29,7 @@
             <div class="bg-[white] w-[320px] font-[500] text-[24px] text-[#FF0000] h-[64px] px-[26px] py-[14px] rounded-[20px] mt-[48px]">
                 <form class="" action="<?php if(isset($_SESSION['user'])) echo "index.php?act=addtocard"; else echo "index.php?act=signin"?>" method="post">
                     <input type="hidden" name="image" value="<?=$detail_pro['image_link']?>">
-                    <input type="hidden" name="id" value="<?=$detail_pro['id']?>">
+                    <input type="hidden" name="id" value="<?=$detail_pro['pro_id']?>">
                     <input type="hidden" name="price" value="<?=$detail_pro['price']?>">
                     <input type="hidden" name="pro_name" value="<?=$detail_pro['pro_name']?>">
                     <input type="hidden" name="user" value="<?php if(isset($_SESSION['user'])) echo $_SESSION['user']['id'] ?>">
@@ -47,10 +47,10 @@
             <div class="grid grid-cols-5 gap-4">
                 <?php foreach($similar_pro as $pro){?>
                     <div class="item text-center space-y-2">
-                    <a href="index.php?act=detail_pro&pro_id=<?php echo $pro['id']?>" class="h-[300px]">
+                    <a href="index.php?act=detail_pro&pro_id=<?php echo $pro['pro_id']?>" class="h-[300px]">
                         <img class="w-full h-[230px] mb-2 " src="./img/<?=$pro['image_link']?>" alt="">
                     </a>
-                    <a href="index.php?act=detail_pro&pro_id=<?php echo $pro['id']?>"
+                    <a href="index.php?act=detail_pro&pro_id=<?php echo $pro['pro_id']?>"
                         class="">
                         <span class="px-3 font-[500] text-[20px] text-teal-800"><?php echo $pro['pro_name']?></span>
                     </a>
@@ -59,16 +59,13 @@
             <?php }?>       
             </div>
         </div> <!-- End .similar_pro -->
-        <div class="">
-	<div class="text-[22px] font-bold text-gray-700 mb-5 ml-[120px] mt-[50px] ">
-    	BÌNH LUẬN
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                    $("#binhluan").load("view/binhluanform.php", {idpro: <?= $pro['pro_id']?>});   
+            });
+        </script>
+	<div id="binhluan" class="text-[22px] font-bold text-gray-700 mb-5 ml-[120px] mt-[50px] ">
     </div>
-    <div class="ml-[120px] rounded">
-        <form name="">
-        	<input type="text" name="name" placeholder="Name..."/></br></br>
-            <textarea name="comments" placeholder="nội dung bình luận..." style="width:635px; height:100px;"></textarea></br></br>
-            <a href="#" onClick="commentSubmit()" class="w-[40px] h-[40px] bg-slate-700 text-white rounded">Gửi</a></br>
-        </form>
-    </div>
-    </div>
+
     </div><!-- End .container-->    
