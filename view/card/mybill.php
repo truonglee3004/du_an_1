@@ -42,13 +42,13 @@
                 <td class="text-center">
                     <a class="bg-[orange] rounded-[20px] p-[10px] font-bold" href="index.php?act=detail_bill&bill_id=<?=$order_id?>">Chi tiết Đơn Hàng</a>
                     <a class="bg-[orange] rounded-[20px] p-[10px] font-bold" href="<?php
-if ($status = "Đang giao hàng" || $status = "Hoàn Tất") {
+if ($status == "Đang giao hàng" || $status == "Hoàn Tất") {
   echo "#";
-} else {
+} else if ($status == "Đơn hàng mới" || $status == "Đang xử lý"){
   echo "index.php?act=delete_bill&bill_id=$order_id";
 }
 ?>
-"><?php if($status = "Đang giao hàng" || $status = "Hoàn Tất") echo "Không thể hủy đơn hàng"; else echo"Hủy đơn hàng";?></a>
+"><?php if($status == "Đang giao hàng" || $status == "Hoàn Tất") echo "Không thể hủy đơn hàng"; else echo"Hủy đơn hàng";?></a>
                 </td> 
             </tr>
         <?php
@@ -61,10 +61,6 @@ if ($status = "Đang giao hàng" || $status = "Hoàn Tất") {
             <p class="text-[24px]">CHÚ THÍCH</p>
         </div>
     </div>
-    <div class="action w-full mx-auto mt-4 space-x-1 flex">
-       <a href="index.php?act=bill">Đặt Hàng</a>
-                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')"
-                        href="index.php?act=delete_card">Xóa Giỏ Hàng</a>
 
     </div> <!-- End .action -->
 </div> <!-- End .list_cate-->

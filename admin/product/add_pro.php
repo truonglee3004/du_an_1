@@ -22,22 +22,19 @@
                     <input class="border w-full rounded-[4px] px-3 h-[40px]"
                            type="number"  name="don_gia" id ="don_gia"
                            placeholder="Vui lòng nhập giá sản phẩm..">
-                    <?php echo isset($error['empty_pro_price'])?$error['empty_pro_price']:" "?>
                 </div>
                 <div>
-                    <label for="don_gia">Số Lượng</label>
+                    <label for="so_luong">Số Lượng</label>
                     <input class="border w-full rounded-[4px] px-3 h-[40px]"
-                           type="number"  name="soluong" id ="don_gia"
-                           placeholder="Vui lòng nhập giá sản phẩm..">
-                    <?php echo isset($error['empty_pro_price'])?$error['empty_pro_price']:" "?>
+                           type="number"  name="soluong" id ="soluong"
+                           placeholder="Vui lòng nhập số lượng sản phẩm..">
                 </div>
-
                 <div>
                     <label for="ten_san_pham">Tên sản phẩm</label>
                     <input class="border w-full rounded-[4px] px-3 h-[40px]"
                            type="text" name="ten_san_pham" id="ten_san_pham"
                            placeholder="Vui lòng nhập tên sản phẩm..">
-                    <?php echo isset($error['empty_pro_name'])?$error['empty_pro_name'] : " " ?>
+                    
                 </div>
                 <div>
                     <label for="giam_gia">Giảm giá</label>
@@ -76,6 +73,7 @@
                           placeholder="Mô tả sản phẩm..."
                           ></textarea>
             </div>
+            <?php echo isset($error['empty_pro_name'])?$error['empty_pro_name'] : " " ?>
             <div class="button text-[19px] mt-3">
                 <input class="border px-3 py-1 rounded-[4px] bg-[#FFC0CB] hover:font-[500]"
                     type="submit" value="Lưu lại" name="add_pro">

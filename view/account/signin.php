@@ -28,7 +28,7 @@
             </div>
                 <form action="index.php?act=signin" method="post" autocomplete="off">
                     <div class="email mt-[87px]">
-                        <input type="email" name="email" id="email"
+                        <input require type="email" name="email" id="email"
                         placeholder="EMAIL ADDRESS"
                         class="block border border-[#37A9CD] bg-[#D9D9D9]  w-[834px] mx-auto  h-[90px] rounded-[30px]"
                         >
@@ -56,7 +56,7 @@
                     <span class=" text-[#000000]">
                         NOT A MEMBER?
                     </span>
-                    <a href="" class="text-[#FF6C01]">
+                    <a href="index.php?act=signup" class="text-[#FF6C01]">
                         SIGN UP NOW
                     </a>
                 </div>

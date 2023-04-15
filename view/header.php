@@ -75,7 +75,7 @@
                 <div class="<?php if(isset($_SESSION['user'])) echo "group"; else echo ""; ?>">
                     <a  href="<?php if(!isset($_SESSION['user'])) echo "index.php?act=signin"; else echo "#";?>"><iconify-icon icon="material-symbols:person" width="26"></iconify-icon><?php if(isset($_SESSION['user'])) echo $_SESSION['user']['user_name'];?></a>
                     <ul class="hidden bg-white absolute z-10 group-hover:block">
-                        <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="#">Đổi mật khẩu</a></li>
+                        <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="index.php?act=doimatkhau">Đổi mật khẩu</a></li>
                         <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="index.php?act=edit_acc">Cài đặt tài khoản</a></li>
                         <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="index.php?act=mybill">Đơn hàng của tôi</a></li>
                         <?php 

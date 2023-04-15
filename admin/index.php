@@ -3,6 +3,7 @@
     include "../model/model_catalog.php";
     include "../model/model_product.php";
     include "../model/model_thongke.php";
+    include "../model/model_binhluan.php";
     include "header.php";
 // Controller
     if(isset($_GET['act'])){
@@ -11,9 +12,13 @@
             case 'add_cate': // Thêm danh mục
                 if(isset($_POST['add_cate'])){
                     $cate_name = $_POST['ten_loai'];
+                    if(trim($cate_name) === ""){
+                        $thong_bao = "<span class='text-red-500'>Vui lòng nhập tên danh mục</span>";
+                    }else{
                     add_cate($cate_name);
                     $thong_bao = "<span class='text-red-500'>Thêm Danh Mục Thành Công</span>";
-                    header("location:index_admin.php?act=list_cate");
+                    header("location:index.php?act=list_cate");
+                    }
                 }
                 include "catalog/add_cate.php";
                 break;
@@ -41,8 +46,13 @@
                 if(isset($_POST['edit_cate'])){
                     $cate_name = $_POST['ten_loai'];
                     $cate_id = $_POST['cate_id'];
+                    if(trim($cate_name) === ""){
+                        $thong_bao = "Vui lòng nhập tên danh mục"; 
+                    }
+                    else{
                     update_cate($cate_id, $cate_name);
                     $thong_bao = "*Cập nhật loại hàng thành công"; 
+                    }
                 }
                 $list_cate = queryAll();
                 include "catalog/list_cate.php";
@@ -55,10 +65,9 @@
                     $pro_price = $_POST['don_gia'];
                     $giam_gia = $_POST['giam_gia'];
                     $pro_desc = $_POST['mo_ta'];
-                    $chat_lieu = $_POST['chat_lieu'];
+                    $chat_lieu = $_POST['size'];
                     $cate_id = $_POST['category'];
-
-                    $target_file = "../upload/". $_FILES['hinh_anh']['name'];
+                    $target_file = "../img/". $_FILES['hinh_anh']['name'];
                     if(empty($pro_name)){ // Kiểm tra tên sản phẩm có để trống hay không
                         $error['empty_pro_name'] = "<span class='text-red-600'>*Không để trống tên sản phẩm</span>";
                     }
@@ -67,7 +76,7 @@
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
-                        add_pro($pro_name, $pro_price, $target_file, $pro_desc, $giamgia, $chat_lieu, $cate_id);
+                        add_pro($pro_name, $pro_price,$amount, $target_file, $pro_desc, $giamgia, $chat_lieu, $cate_id);
                         $thong_bao = "<span class = 'text-red-500'>Thêm sản phẩm thành công </span>";
                         header("location:index_admin.php?act=list_pro");
                         
@@ -111,11 +120,8 @@
 
                     $target_dir = "../img/";
                     $target_file = $target_dir . $_FILES['hinh_anh']['name'];
-                    if(empty($pro_name)){ // Kiểm tra tên sản phẩm có để trống hay không
-                        $error['empty_pro_name'] = "<span class='text-red-600'>*Không cập nhật tên sản phẩm trống</span>";
-                    }
-                    if(empty($pro_price)){ // Kiểm tra giá sản phẩm có để trống hay không
-                        $error['empty_pro_price'] = "<span class='text-red-600'>*Không cập nhật giá sản phẩm trống</span>";
+                    if(trim($pro_name) === "" || trim($pro_price) === "" || trim($amount) === "" || trim($giam_gia) === "" || trim($cate_id) === ""){ // Kiểm tra tên sản phẩm có để trống hay không
+                        $error['empty_pro_name'] = "<span class='text-red-600'>*Vui lòng nhập đầy đủ thông tin</span>";
                     }
                     if(empty($error)){
                         move_uploaded_file($_FILES['hinh_anh']['tmp_name'],$target_file);
@@ -176,8 +182,11 @@
                     $user_email = $_POST['user_email'];
                     $user_phone = $_POST['user_phone'];
                     $address = $_POST['address'];
+                    if(trim($user_name) === "" || trim($user_email) === "" || trim($user_phone) === "" || trim($address) === ""){ // Kiểm tra tên sản phẩm có để trống hay không
+                        $thong_bao = "<span class='text-red-600'>*Vui lòng nhập đầy đủ thông tin</span>";
+                    }else{
                     update_user($user_id, $user_name,$user_email,$user_phone,$address);
-                    $thong_bao = "*Cập nhật loại hàng thành công"; 
+                    $thong_bao = "*Cập nhật loại hàng thành công"; }
                 }
                 $list_user = queryAllUser();
                 include "user/list_user.php";
@@ -226,6 +235,3 @@
     } else{
         include "body.php";
     }
-    
-    
-?>

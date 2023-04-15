@@ -16,11 +16,24 @@ $adidas = query_adidas();
 $puma = query_puma();
 $spd = query_spd();
 $list_cata = queryAll();
-$list_pro = queryAllproduct();
+// $list_pro = queryAllproduct();
 if(isset($_GET['act']) && !empty($_GET['act'])){
     $act = $_GET['act'];
     switch ($act) { 
         case 'list_pro':
+            if(isset($_POST['search_by_cate'])){
+                $key_word = $_POST['key_word'];
+                $cate_id = $_POST['cate_id'];
+            } else{
+                $key_word = "";
+                $cate_id = 0;
+            }
+            if(isset($_GET['cate_id']) && ($_GET['cate_id'] > 0)){
+                $cate_id = $_GET['cate_id'];
+                $key_word = "";
+            }
+            $list_cate = queryAll();
+            $list_pro = queryAllPro($key_word, $cate_id);
             include "view/list_pro.php";
             break;
         case 'detail_pro':
@@ -40,11 +53,20 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                 $email = $_POST['email'];
                 $userName = $_POST['userName'];
                 $password = $_POST['password'];
+                $repassword = $_POST['repass'];
+                if(trim($email) === "" || trim($userName) === "" || trim($password) === ""){
+                    $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thất bại. Vui lòng nhập đầy đủ thông tin</span>";
+                }
+                else if($_POST['repass'] != $_POST['password']){
+                    $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thất bại. Vui lòng nhập đúng trường nhập lại mật khẩu</span>";
+                }
+                else{
                 add_user($email, $userName, $password);
                 // $list_user = queryAllUser();
                 // setcookie("thong_bao", "Đăng kí tài khoản thành công. Vui lòng đăng nhập để mua hàng", time() + 5);
                 $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thành công. Vui lòng đăng nhập để mua hàng</span>";
                 // header("location:index.php");
+                }
             }
             include "view/account/signup.php";
             break;  
@@ -66,6 +88,25 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
             }
             include "view/account/signin.php";
             break;
+        case 'doimatkhau':
+            if(isset($_POST['doimk'])){
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+                $repass = $_POST['repass'];
+                $user_id = $_POST['user_id'];
+                if(trim($pass) === ""){
+                    $thong_bao = "Vui lòng điền đầy đủ thông tin";
+                }else if($repass != $pass){
+                    $thong_bao = "Nhập lại mật khâu không đúng";
+                }
+                else{
+                    update_pass($user_id, $pass);
+                    $_SESSION['user'] = queryOneUser($email, $pass);
+                    $thong_bao = "Đôi mật khẩu thành công";
+                }
+            }
+            include "view/account/quenmk.php";
+            break; 
         case 'edit_acc':
             if(isset($_POST['update_acc'])){
                 $email = $_POST['hello'];
@@ -144,6 +185,11 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                     $pttt = $_POST['pttt'];
                     $date = date('h:i:sa d/m/Y');
                     $list_cart = queryAllCart($_SESSION['user']['id']);
+                    if(trim($phone) === "" || trim($address) === ""){
+                        $emp = "<p class='text-red-600 font-[700] px-[5px]'>Bạn cần điền đẩy đủ thông tin</p>";
+                        include "view/card/bill.php";
+                    }
+                    else{
                     $id_order = add_bill($user_id,$email,$user_name,$phone,$address,$tong,$date,$pttt);
                     foreach($list_cart as $cart){
 
@@ -160,6 +206,7 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                         header("Location:index.php?act=mybill");
                         }
                     }
+                }
 
                 }
             break;

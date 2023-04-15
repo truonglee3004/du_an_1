@@ -13,17 +13,17 @@
 <body class="bg-gray-300">
   <section class="max-w-7xl mx-auto grid grid-cols-3 mt-6 gap-4">
     <div class="flex place-items-center bg-white w-96 h-60 ">
-      <a class="block w-full" href=" ">
+      <a class="block w-full" href="index.php?act=list_pro&cate_id=1">
         <img class="rounded-md mx-auto my-auto " src="./img/Nike-Logo 1.png" alt="" />
       </a>
     </div>
     <div class="flex place-items-center bg-white w-96 h-60 ">
-      <a class="block w-full" href="">
+      <a class="block w-full" href="index.php?act=list_pro&cate_id=2">
         <img class="rounded-md mx-auto my-auto " src="./img/adidas 1.png" alt="" />
       </a>
     </div>
     <div class="flex place-items-center bg-white w-96 h-60  ">
-      <a class="block w-full" href="">
+      <a class="block w-full" href="index.php?act=list_pro&cate_id=3">
         <img class="rounded-md mx-auto my-auto " src="./img/puma.png" alt="" />
       </a>
     </div>
@@ -33,12 +33,12 @@
       </a>
     </div>
     <div class="flex place-items-center bg-white w-96 h-60 ">
-      <a class="block w-full" href="">
+      <a class="block w-full" href="index.php?act=list_pro&cate_id=4">
         <img class="rounded-md mx-auto my-auto " src="./img/fila.png" alt="" />
       </a>
     </div>
     <div class="flex place-items-center bg-white w-96 h-60 ">
-      <a class="block w-full" href="">
+      <a class="block w-full" href="index.php?act=list_pro&cate_id=5">
         <img class="rounded-md mx-auto my-auto " src="./img/reebok.png" alt="" />
       </a>
     </div>
