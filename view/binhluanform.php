@@ -12,11 +12,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 <body>
     <div class="category w-full mt-5">
         <p class="p-2 text-center text-xl font-sans font-semibold text-[#F54748] border-b">
             BÌNH LUẬN
         </p>
+        <?php if(!isset($_SESSION['user'])){?>
+            <p class="p-2 text-center text-xl font-sans font-semibold text-[#F54748] border-b">
+            Đăng nhập để bình luận
+        </p>
+        <?php }?>
         <ul class="category_list">
         <table>
             <?php
@@ -37,7 +43,7 @@
                 <a class="block border-b p-2 text-lg hover:bg-[#FFEEEE] hover:text-[#F54748]" href="">Túi Đeo Chéo </a>
             </li> -->
         </ul> <!-- End .category_list-->
-        <div class="search-cate mt-2 p-2 bg-[#FFEEEE]">
+        <div class="<?php if(isset($_SESSION['user'])) echo ""; else echo"hidden ";?>search-cate mt-2 p-2 bg-[#FFEEEE]">
             <form action="<?= $_SERVER['PHP_SELF']?>" method="POST" class="flex space-x-2">
                 <input type="hidden" name="idpro" value="<?=$idpro?>">
                 <input require class="border w-full px-2 py-1 " title="Tìm kiếm sản phẩm, danh mục"
