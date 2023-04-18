@@ -25,6 +25,11 @@
         $info_one_user = getOne($sql);
         return $info_one_user;
     }
+    function queryOneUserByEmail($email){
+        $sql = "SELECT * FROM `user` WHERE user_email = '{$email}'" ;
+        $info_one_user = getOne($sql);
+        return $info_one_user;
+    }
     function queryOneUserByID($user_id){
         $sql = "SELECT * FROM `user` WHERE id = '{$user_id}'" ;
         $sql = getOne($sql);

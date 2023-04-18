@@ -54,11 +54,15 @@ if(isset($_GET['act']) && !empty($_GET['act'])){
                 $userName = $_POST['userName'];
                 $password = $_POST['password'];
                 $repassword = $_POST['repass'];
+                $one_user = queryOneUserByEmail($email);
                 if(trim($email) === "" || trim($userName) === "" || trim($password) === ""){
                     $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thất bại. Vui lòng nhập đầy đủ thông tin</span>";
                 }
                 else if($_POST['repass'] != $_POST['password']){
                     $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thất bại. Vui lòng nhập đúng trường nhập lại mật khẩu</span>";
+                }
+                else if(is_array($one_user)){
+                    $thong_bao = "<span class='mt-3 font-[500] text-red-500'>Đăng kí tài khoản thất bại. Email đã được sử dụng, vui lòng sử dụng email khác</span>";
                 }
                 else{
                 add_user($email, $userName, $password);

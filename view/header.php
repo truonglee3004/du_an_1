@@ -86,7 +86,7 @@
                         <li><a class="block px-4 py-2 text-gray-800 hover:bg-gray-400" href="index.php?act=logout">Đăng xuất</a></li>
                     </ul>
                 </div>
-                <div class="text-[20px] font-[700]"><a href="index.php?act=viewcard"><iconify-icon icon="material-symbols:shopping-cart" width="26"></iconify-icon><?php if(isset($list_cart)) echo count($list_cart);?></a></div>
+                <div class="text-[20px] font-[700]"><a href="<?php if(!isset($_SESSION['user'])) echo "index.php?act=signin"; else echo "index.php?act=viewcard";?>"><iconify-icon icon="material-symbols:shopping-cart" width="26"></iconify-icon><?php if(isset($list_cart)) echo count($list_cart);?></a></div>
             </div>
         </div>
         <nav class="flex items-center justify-center gap-x-7 mt-2">
